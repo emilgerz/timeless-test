@@ -1,0 +1,53 @@
+.users {
+  padding: 1px 0;
+  width: calc(100% - 332px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  gap: 1.2rem;
+  overflow-y: auto;
+  position: relative;
+  flex: 1 0 auto;
+  transition: opacity 0.2s ease;
+
+  &::after {
+    content: '';
+    flex: 1 0 100%;
+  }
+}
+
+.topFade {
+  mask-image: linear-gradient(
+    to top,
+    black calc(100% - 48px),
+    transparent 100%
+  );
+}
+
+.bottomFade {
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 48px),
+    transparent 100%
+  );
+}
+
+.topAndBottomFade {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 48px,
+    black calc(100% - 48px),
+    transparent 100%
+  );
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

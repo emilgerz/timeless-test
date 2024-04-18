@@ -1,0 +1,18 @@
+@import 'src/utils/globals';
+
+.stroke {
+  display: flex;
+  gap: 0 0.8em;
+
+  &__field {
+    min-width: 5em;
+    color: $color-font-dark;
+  }
+
+  &__value {
+    width: calc(100% - 7.5em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

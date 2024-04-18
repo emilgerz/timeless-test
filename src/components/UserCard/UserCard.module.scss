@@ -1,0 +1,83 @@
+@import 'src/utils/globals';
+
+.card {
+  width: 332px;
+  height: fit-content;
+  padding: 1.25em;
+  border-radius: 1em;
+  background-color: $color-bg-card-standart;
+  position: relative;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: $color-bg-card-light;
+    outline: 1px solid $color-font-orange-light;
+
+    & > .btnDelete {
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+.btnDelete {
+  opacity: 0;
+  padding: 0.8em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: inherit;
+  border-width: 0px 0px 1px 1px;
+  border-style: solid;
+  border-color: $color-red;
+  border-radius: 0 1em 0 1em;
+  cursor: pointer;
+
+  & > img {
+    user-select: none;
+  }
+
+  &:hover {
+    background-color: $color-bg-card-standart;
+  }
+
+  &:active {
+    background-color: $color-bg-site;
+  }
+}
+
+.header {
+  display: flex;
+  gap: 0 1rem;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  border-radius: 100%;
+  aspect-ratio: 1;
+}
+
+.title {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &__fullname {
+    font-weight: 600;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 12px;
+}
