@@ -10,40 +10,45 @@ export const isDataLoadingSelector = () => {
   return createSelector([mainSelectorDomain], (state) => state.isDataLoading)
 }
 
-export const getUsersBySearchQuerySelector = () => {
-  return createSelector([mainSelectorDomain], (state) => {
-    if (!state.searchValue) {
-      return state.users
-    }
-
-    return state.users.filter((user) => {
-      const locationParsed = formatAdress(user.location)
-      const birthDaParsed = formatDate(user.dob.date)
-
-      if (
-        [
-          user.name.first,
-          user.name.last,
-          user.email,
-          user.phone,
-          birthDaParsed,
-          locationParsed,
-        ].some((field) =>
-          field.toLowerCase().includes(state.searchValue.toLowerCase()),
-        )
-      ) {
-        return true
-      }
-
-      return false
-    })
-  })
+export const getAllUsersSelector = (state: RootState) => {
+  return state.users
 }
 
-export const getAllUsersSelector = () => {
-  return createSelector([mainSelectorDomain], (state) => {
-    return state.users
-  })
+export const getSearchValueSelector = (state: RootState) => {
+  return state.users.searchValue
+}
+
+export const getUsersBySearchQuerySelector = () => {
+  return createSelector(
+    [getAllUsersSelector, getSearchValueSelector],
+    ({ users }, searchValue) => {
+      if (!searchValue) {
+        return users
+      }
+
+      return users.filter((user) => {
+        const locationParsed = formatAdress(user.location)
+        const birthDaParsed = formatDate(user.dob.date)
+
+        if (
+          [
+            user.name.first,
+            user.name.last,
+            user.email,
+            user.phone,
+            birthDaParsed,
+            locationParsed,
+          ].some((field) =>
+            field.toLowerCase().includes(searchValue.toLowerCase().trim()),
+          )
+        ) {
+          return true
+        }
+
+        return false
+      })
+    },
+  )
 }
 
 export const getAmountUsersInfoSelector = () => {
