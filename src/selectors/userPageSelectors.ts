@@ -27,8 +27,10 @@ export const getUsersBySearchQuerySelector = () => {
           user.email,
           user.phone,
           birthDaParsed,
-          ...locationParsed,
-        ].some((field) => field.includes(state.searchValue))
+          locationParsed,
+        ].some((field) =>
+          field.toLowerCase().includes(state.searchValue.toLowerCase()),
+        )
       ) {
         return true
       }
