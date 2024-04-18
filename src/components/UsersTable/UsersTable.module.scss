@@ -1,3 +1,5 @@
+@import 'src/utils/globals';
+
 .users {
   padding: 1px 0;
   width: calc(100% - 332px);
@@ -10,6 +12,20 @@
   position: relative;
   flex: 1 0 auto;
   transition: opacity 0.2s ease;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: $color-gray;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: $color-gray-dark;
+  }
 
   &::after {
     content: '';
