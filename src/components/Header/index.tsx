@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from '../../store/store'
 import { fetchUsers } from '../../utils/thunks'
 import s from './Header.module.scss'
 import { userPageSlice } from '../../store/reducers/userPageReducer'
+import { useDebounce } from '../../hooks/useDebounce'
 
 export const Header = () => {
   const dispatch = useDispatch()
@@ -10,21 +11,15 @@ export const Header = () => {
 
   const [inputValue, setInputValue] = useState('')
 
-  const debounceIsActiveRef = useRef<undefined | number>(Math.random())
+  const debouncedValue = useDebounce(inputValue, 500)
 
   useEffect(() => {
-    if (debounceIsActiveRef.current) {
-      clearTimeout(debounceIsActiveRef.current)
-
-      debounceIsActiveRef.current = setTimeout(() => {
-        dispatch(
-          userPageSlice.actions.setSearchValue(
-            inputValue.toLowerCase().trim().split(' '),
-          ),
-        )
-      }, 500)
-    }
-  }, [inputValue])
+    dispatch(
+      userPageSlice.actions.setSearchValue(
+        debouncedValue.toLowerCase().trim().split(' '),
+      ),
+    )
+  }, [debouncedValue])
 
   return (
     <header className={s.header}>
