@@ -1,7 +1,7 @@
 @import 'src/utils/globals';
 
 .users {
-  padding: 1px 0;
+  padding: 1px;
   width: calc(100% - 332px);
   display: grid;
   grid-template-columns: repeat(auto-fill, 332px);
