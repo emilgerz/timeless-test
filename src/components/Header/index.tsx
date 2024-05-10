@@ -17,7 +17,11 @@ export const Header = () => {
       clearTimeout(debounceIsActiveRef.current)
 
       debounceIsActiveRef.current = setTimeout(() => {
-        dispatch(userPageSlice.actions.setSearchValue(inputValue))
+        dispatch(
+          userPageSlice.actions.setSearchValue(
+            inputValue.toLowerCase().trim().split(' '),
+          ),
+        )
       }, 500)
     }
   }, [inputValue])

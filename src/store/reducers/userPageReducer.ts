@@ -6,14 +6,14 @@ import { fetchUsers } from '../../utils/thunks'
 export interface UserPageReducer {
   users: User[]
   info: Info | null
-  searchValue: string
+  searchValue: string[]
   isDataLoading: boolean
 }
 
 const initialState: UserPageReducer = {
   users: [],
   info: null,
-  searchValue: '',
+  searchValue: [''],
   isDataLoading: false,
 }
 
@@ -29,7 +29,7 @@ export const userPageSlice = createSlice({
 
       state.users = state.users.filter((user) => user.registered.date !== date)
     },
-    setSearchValue: (state, { payload }: { payload: string }) => {
+    setSearchValue: (state, { payload }: { payload: string[] }) => {
       state.searchValue = payload
     },
   },
