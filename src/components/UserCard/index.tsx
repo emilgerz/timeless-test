@@ -42,9 +42,11 @@ export const UserCard = ({ user }: UserCardProps) => {
           />
 
           <div className={s.title}>
-            <h2 className={s.title__fullname}>{userFullName}</h2>
+            <h2 className={s.title__fullname} title={userFullName}>
+              {userFullName}
+            </h2>
 
-            <span>{user.email}</span>
+            <span title={user.email}>{user.email}</span>
           </div>
         </div>
 
