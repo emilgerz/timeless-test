@@ -69,9 +69,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 200px;
 
   &__fullname {
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
